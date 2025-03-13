@@ -1,0 +1,479 @@
+/* Variáveis de cores e espaçamento */
+:root {
+  --color-background: #333;
+  --color-text-light: white;
+  --color-text-dark: #333;
+  --color-text-muted: #555;
+  --color-card-background: white;
+  --color-card-shadow: rgba(0, 0, 0, 0.1);
+  --color-error: red;
+  --spacing-small: 10px;
+  --spacing-medium: 20px;
+  --spacing-large: 40px;
+  --spacing-extra-large: 70px;
+}
+
+/* Container principal */
+.app-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Sidebar fixa na esquerda */
+.sidebar {
+  width: 250px;
+  background: #333;
+  color: var(--color-text-light);
+  padding: var(--spacing-medium);
+  padding-top: var(--spacing-extra-large);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+}
+
+/* Ajusta o conteúdo para não ficar sobre a sidebar */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.content {
+  flex: 1;
+  padding: var(--spacing-medium);
+  margin-left: 250px; /* Para empurrar o conteúdo e não sobrepor a sidebar */
+  overflow-y: auto;
+  box-sizing: border-box;
+  margin-top: 70px; /* Ajuste para não cobrir o conteúdo */
+  padding: var(--spacing-medium);
+}
+
+/* Durante o Login e Registro as margens e paddings do conteúdo principal do site não afeta */
+.auth-page .content {
+  margin-left: 0;
+  margin-top: 0;
+  padding: 0;
+}
+
+/* Estilizando os links na Sidebar */
+.sidebar a {
+  display: block;
+  color: var(--color-text-light);
+  text-decoration: none;
+  padding: var(--spacing-small);
+  margin: var(--spacing-small) 0;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: var(--color-text-muted);
+}
+
+/* Estilizando a página de Dashboard */
+.dashboard {
+  padding: var(--spacing-medium);
+}
+
+.dashboard h1 {
+  font-size: 2rem;
+  color: var(--color-text-dark);
+}
+
+.dashboard p {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+/* Cards do Dashboard */
+.dashboard-cards {
+  display: flex;
+  gap: var(--spacing-medium);
+  margin-top: var(--spacing-medium);
+}
+
+.card {
+  background: var(--color-card-background);
+  padding: var(--spacing-medium);
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px var(--color-card-shadow);
+  width: 30%;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  margin-bottom: var(--spacing-small);
+  font-size: 1.25rem;
+}
+
+.card p {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* Estilizando a página de Tarefas */
+.tasks-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: var(--spacing-medium);
+  background-color: var(--color-card-background);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tasks-title {
+  font-size: 2rem;
+  color: var(--color-text-dark);
+  text-align: center;
+  margin-bottom: var(--spacing-medium);
+}
+
+.tasks-input {
+  width: 80%;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: var(--color-text-dark);
+}
+
+.tasks-add-button {
+  padding: 10px 15px;
+  background-color: var(--color-text-dark);
+  border: none;
+  border-radius: 5px;
+  color: var(--color-text-light);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tasks-add-button:hover {
+  background-color: var(--color-text-muted);
+}
+
+.tasks-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: var(--spacing-medium);
+}
+
+.tasks-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-card-background);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tasks-item span {
+  flex-grow: 1;
+  font-size: 1rem;
+  color: var(--color-text-dark);
+}
+
+.tasks-item span:hover {
+  color: var(--color-text-muted);
+}
+
+.tasks-delete-button {
+  background-color: var(--color-text-dark);
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  color: var(--color-text-light);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.tasks-delete-button:hover {
+  background-color: var(--color-text-muted);
+}
+
+/* Mensagem de erro */
+.error {
+  color: var(--color-error);
+  font-weight: bold;
+}
+
+/* Container principal das notas */
+.notes {
+  background-color: var(--color-card-background);
+  padding: var(--spacing-medium);
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--color-card-shadow);
+  width: 100%;
+  max-width: 600px;
+  margin: var(--spacing-medium) auto;
+}
+
+/* Título das notas */
+.notes h1 {
+  font-size: 2rem;
+  color: var(--color-text-dark);
+  text-align: center;
+  margin-bottom: var(--spacing-medium);
+}
+
+/* Caixa de texto para adicionar notas */
+.notes textarea {
+  width: 100%;
+  height: 100px;
+  padding: var(--spacing-medium);
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: none;
+  margin-bottom: var(--spacing-medium);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.notes textarea:focus {
+  border-color: #007bff;
+}
+
+/* Botão de adicionar nota */
+.notes button {
+  background-color: var(--color-text-dark);
+  color: var(--color-text-light);
+  border: none;
+  padding: var(--spacing-small) var(--spacing-medium);
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.notes button:hover {
+  background-color: var(--color-text-muted);
+}
+
+/* Lista de notas */
+.notes ul {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--spacing-medium);
+}
+
+/* Itens da lista de notas */
+.notes li {
+  background-color: var(--color-card-background);
+  padding: var(--spacing-small);
+  margin-bottom: var(--spacing-small);
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px var(--color-card-shadow);
+  font-size: 1rem;
+  color: var(--color-text-dark);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Efeito de hover nas notas */
+.notes li:hover {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Container principal dos Relatórios */
+.reports {
+  background-color: var(--color-card-background);
+  padding: var(--spacing-medium);
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--color-card-shadow);
+  width: 100%;
+  max-width: 800px;
+  margin: var(--spacing-medium) auto;
+}
+
+/* Título dos Relatórios */
+.reports h1 {
+  font-size: 2rem;
+  color: var(--color-text-dark);
+  text-align: center;
+  margin-bottom: var(--spacing-medium);
+}
+
+/* Parágrafo dos Relatórios */
+.reports p {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* Estilizando o Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(0px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-small) var(--spacing-medium);
+  box-shadow: 0px 4px 6px var(--color-card-shadow);
+  transition: backdrop-filter 0.3s, background 0.3s;
+  z-index: 1000;
+}
+
+/* Efeito de blur ao rolar a página */
+.header.blur {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Estilizando a logo */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--color-text-dark);
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Barra de pesquisa */
+.search-bar {
+  flex: 1;
+  max-width: 400px;
+  padding: var(--spacing-small);
+  padding-left: 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+/* Perfil */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-weight: bold;
+  color: var(--color-text-dark);
+}
+
+/* Login e Registro */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to top, #69b3f4, #ffffff), url(./assets/backgrounds/background-login-register.webp);
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: 5%;
+  background-blend-mode: overlay;
+  animation: moveBackground 10s linear infinite;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0%;
+  }
+  50% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 0 216%;
+  }
+}
+
+.auth-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.auth-logo {
+  width: 80px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.auth-box h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.auth-subtitle {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 2.3rem;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  box-shadow: 2px 3px 4px var(--color-card-shadow);
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  background: black;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-form button:hover {
+  background: #333;
+}
+
+.auth-question {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.auth-question a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.auth-question a:hover {
+  text-decoration: underline;
+}
